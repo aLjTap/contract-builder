@@ -134,21 +134,23 @@
 - [ ] Template gallery in sidebar with preview
 - [ ] One-click instantiation of node groups
 
-#### 3.3 Canton API Integration Layer
+#### 3.3 Canton API Integration Layer (via `@daml/react` + `@daml/ledger`)
 - [ ] Create `packages/canton-client` workspace package
-- [ ] Ledger API client (JSON API mode)
-  - Party management endpoints
-  - Command submission
-  - Active contract set queries
-  - Transaction stream subscriptions
-- [ ] Scan API client
+- [ ] `DamlLedger` provider setup (wraps builder app with ledger connection)
+- [ ] Leverage `@daml/react` hooks throughout the builder:
+  - `useParty()` — current party context for commands
+  - `useLedger()` — create, exercise, archive contracts
+  - `useQuery()` — fetch active contracts by template
+  - `useStreamQueries()` — real-time contract stream via WebSocket
+  - `useFetchByKey()` / `useStreamFetchByKeys()` — key-based lookups
+- [ ] Scan API client (HTTP)
   - DSO party state queries
   - Network infrastructure status
-- [ ] Validator API client
+- [ ] Validator API client (HTTP)
   - Wallet operations
   - Higher-level transaction abstractions
 - [ ] Connection settings panel in builder UI
-  - Validator Node URL configuration
+  - Validator Node URL / JSON API base URL configuration
   - Party authentication token management
   - Network selection (DevNet / TestNet / MainNet)
 
@@ -243,10 +245,11 @@
 |----------|--------|-----------|
 | **Graph Library** | `@xyflow/react` v12 | Best React node editor; supports SSR, dark mode, shadcn integration |
 | **Canvas State** | Zustand | Lightweight, integrates cleanly with React Flow's controlled mode |
-| **Code Editor** | Monaco Editor | Industry standard; Daml syntax can be registered as custom language |
-| **Auto-layout** | ELK.js | Handles hierarchical graph layouts well; WASM-based, fast |
+| **Code Editor** | `@monaco-editor/react` | Industry standard; Daml syntax can be registered as custom language |
+| **Auto-layout** | `elkjs` (ELK.js) | Handles hierarchical graph layouts well; WASM-based, fast |
+| **Ledger Integration** | `@daml/react` + `@daml/ledger` | Official Daml React hooks (useQuery, useParty, useLedger, useStreamQueries) + JSON API client |
 | **Daml Compilation** | Custom AST compiler | No existing JS-based Daml compiler; we build graph→AST→text pipeline |
-| **Canton API** | JSON API (HTTP) | Simpler than gRPC for browser-based client; full Ledger API coverage |
+| **Canton API** | `@daml/ledger` + HTTP clients | Ledger via official client; Scan/Validator via custom HTTP |
 | **AI Integration** | Existing AI SDK | Already integrated; extend with Daml-specific system prompts |
 
 ---

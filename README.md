@@ -71,6 +71,8 @@ DAML Contract Builder lets you visually design smart contracts by dragging nodes
 | **Auth** | [Better-Auth](https://www.better-auth.com/) |
 | **AI** | [AI SDK](https://sdk.vercel.ai/) (Google Gemini) |
 | **State** | Zustand (canvas state) |
+| **Daml React** | [@daml/react](https://www.npmjs.com/package/@daml/react) (useQuery, useParty, useLedger, useStreamQueries) |
+| **Daml Ledger** | [@daml/ledger](https://www.npmjs.com/package/@daml/ledger) (JSON API client) |
 | **Auto-layout** | ELK.js |
 | **Build** | Turborepo + pnpm workspaces |
 | **Linting** | Biome |
