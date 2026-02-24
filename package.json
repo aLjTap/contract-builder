@@ -1,0 +1,36 @@
+{
+  "name": "contract-builder",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "type": "module",
+  "scripts": {
+    "dev": "turbo dev",
+    "build": "turbo build",
+    "check-types": "turbo check-types",
+    "dev:native": "turbo -F native dev",
+    "dev:web": "turbo -F web dev",
+    "db:push": "turbo -F @contract-builder/db db:push",
+    "db:studio": "turbo -F @contract-builder/db db:studio",
+    "db:generate": "turbo -F @contract-builder/db db:generate",
+    "db:migrate": "turbo -F @contract-builder/db db:migrate",
+    "db:local": "turbo -F @contract-builder/db db:local",
+    "check": "biome check --write .",
+    "ruler:apply": "pnpm dlx @intellectronica/ruler@latest apply --local-only"
+  },
+  "dependencies": {
+    "@contract-builder/env": "workspace:*",
+    "dotenv": "catalog:",
+    "zod": "catalog:"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^2.2.0",
+    "@contract-builder/config": "workspace:*",
+    "@types/node": "catalog:",
+    "turbo": "^2.6.3",
+    "typescript": "catalog:"
+  },
+  "packageManager": "pnpm@10.26.0"
+}

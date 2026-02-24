@@ -1,0 +1,3 @@
+{
+  "extends": "@contract-builder/config/tsconfig.base.json"
+}
